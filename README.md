@@ -12,7 +12,7 @@ It allows users to manage stock purchases, investor transactions, and company in
 - **User Interface**: HTML templates for interacting with the system.  
 
 ## 🛠️ Technologies Used  
-- **Backend**: Django, SQLite/PostgreSQL  
+- **Backend**: Django
 - **Frontend**: HTML, CSS  
 - **Database Queries**: Raw SQL (`view_queries.sql`)  
 
