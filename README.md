@@ -18,10 +18,13 @@ It allows users to manage stock purchases, investor transactions, and company in
 
 ## 📷 Screenshots  
 ### Homepage  
-![Homepage](screenshots/homepage.png)  
+![Homepage](screenshots/HomePage.png)  
 
-### Transaction Page  
-![Transaction Page](screenshots/transaction.png)  
+### Add Transaction Page  
+![Transaction Page](screenshots/new_transaction.png)  
+
+### Buy Stocks Page  
+![Transaction Page](screenshots/buy_stocks.png)
 
 > More screenshots available in the `/screenshots` folder.  
 
