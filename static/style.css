@@ -1,0 +1,46 @@
+h1, h2, h3, h4, h5, form
+{
+font-family: "comic sans ms";
+color: black;
+font-style: italic
+}
+
+table
+{
+background-color:white;
+font-family: "comic sans ms";
+margin-left: auto;
+margin-right: auto;
+color: black;
+text-align: left;
+word-spacing: normal;
+}
+
+p,li,th,td
+{
+font-family: "comic sans ms";
+color: black;
+text-align: left;
+word-spacing: normal;
+}
+
+hr
+{
+color:black;
+}
+
+iframe
+{
+margin: 0;
+padding: 0;
+border: none;
+width: 25%;
+height: 25%;
+}
+a:link {font-family: "comic sans ms" ; color:black}
+a:visited  {color:black}
+a:active   {color:black}
+a:hover    {color:red}
+
+body {background-color: forestgreen}
+

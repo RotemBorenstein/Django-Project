@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stocks Website</title>
+</head>
+<body style="background-color: #ddffdd; text-align: center; font-family: Arial,serif; margin-top: 10px">
+<H1 style="color: forestgreen">Buy Stocks</H1>
+<br>
+<form method="post">
+    {% csrf_token %}
+    ID: <input type="number" name ="ID" required><br>
+    Symbol:<input type="text" name="Symbol" required><br>
+    Quantity: <input type="number" name ="BQuantity" min="1" step="1" required><br>
+    <input type="submit" value="Submit">
+</form>
+
+{% if request.method == 'POST' %}
+    {% if idErrorFlag %}
+        <h2 style="color: red">ERROR: NO SUCH ID</h2>
+    {% endif %}
+
+    {% if dateCompanyErrorFlag %}
+        <h2 style="color: red">ERROR: ALREADY BOUGHT STOCKS FROM THIS COMPANY TODAY</h2>
+    {% endif %}
+
+    {% if companyErrorFlag %}
+        <h2 style="color: red">ERROR: NO SUCH COMPANY</h2>
+    {% endif %}
+
+    {% if minusErrorFlag %}
+        <h2 style="color: red">ERROR: NEGATIVE BALANCE</h2>
+    {% endif %}
+
+{% endif %}
+
+<h2>Last 10 Stocks Buy:</h2>
+<table border="1" width="40%" style="margin-left: auto; margin-right: auto;">
+    <th>Date</th>
+    <th>Investor ID</th>
+    <th>Symbol</th>
+    <th>Quantity</th>
+
+    {% for buy in lastBought %}
+    <tr>
+        <td>{{ buy.tDate }} </td>
+        <td>{{ buy.ID }} </td>
+        <td>{{ buy.Symbol }} </td>
+        <td>{{ buy.BQuantity }} </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br><br>
+<a href="{% url 'index' %}" style="color:black;">Home</a>
+<a href="{% url 'Query_Results' %}" style="color:black;">Query Results</a>
+<a href="{% url 'Add_Transaction' %}" style="color:black;">Add Transaction</a>
+
+
+</body>
+</html>

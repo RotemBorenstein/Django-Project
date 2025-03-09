@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stocks Website</title>
+</head>
+<body style="background-color: #ddffdd; text-align: center; font-family: Arial,serif; margin-top: 10px">
+<H1 style="color: forestgreen">Add New Transaction</H1>
+<br>
+<form method="post">
+    {% csrf_token %}
+    ID: <input type="number" name ="ID" required><br>
+    Transaction Sum:<input type="number" name="transactionSum" min="0.0000001" step="any" required><br>
+    <input type="submit" value="Submit">
+</form>
+{% if request.method == 'POST' %}
+    {% if idErrorFlag %}
+        <h2 style="color: red">ERROR: NO SUCH ID</h2>
+    {% endif %}
+
+    {% if dateErrorFlag %}
+        <h2 style="color: red">ERROR: ALREADY TRANSFERRED TODAY</h2>
+    {% endif %}
+{% endif %}
+
+<h2>Last 10 Transactions:</h2>
+<table border="1" width="40%" style="margin-left: auto; margin-right: auto;">
+    <th>Date</th>
+    <th>Investor ID</th>
+    <th>transaction Sum</th>
+
+    {% for transaction in lastTransactions %}
+    <tr>
+        <td>{{ transaction.tDate }} </td>
+        <td>{{ transaction.ID }} </td>
+        <td>{{ transaction.TAmount }} </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br><br>
+<a href="{% url 'index' %}" style="color:black;">Home</a>
+<a href="{% url 'Query_Results' %}" style="color:black;">Query Results</a>
+<a href="{% url 'Buy_Stocks' %}" style="color:black;">Buy Stocks</a>
+
+
+</body>
+</html>
